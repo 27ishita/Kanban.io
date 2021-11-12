@@ -1,34 +1,59 @@
 <div class="container">
   <div class="row">
     <div class="col-md-4">
-        <div class="drag-container">
-            <div class="section-heading">To Do</div>
-        
-            <div cdkDropList id="todolist" [cdkDropListData]="toDo" [cdkDropListConnectedTo]="['doinglist','donelist']"
-              class="item-list" (cdkDropListDropped)="drop($event)">
-              <div class="item-box" *ngFor="let item of toDo" cdkDrag>{{item.project_name}}</div>
-            </div>
+      <div class="drag-container">
+        <div class="section-heading">To Do</div>
+
+        <div
+          cdkDropList
+          id="todolist"
+          [cdkDropListData]="toDo"
+          [cdkDropListConnectedTo]="['doinglist', 'donelist']"
+          class="item-list"
+          (cdkDropListDropped)="drop($event)"
+        >
+          <div class="item-box" *ngFor="let item of toDo" cdkDrag>
+            {{ item.project_name }}
+          </div>
         </div>
+      </div>
+    </div>
+    
+    <div class="col-md-4">
+      <div class="drag-container">
+        <div class="section-heading">Doing</div>
+
+        <div
+          cdkDropList
+          id="doinglist"
+          [cdkDropListData]="doing"
+          [cdkDropListConnectedTo]="['todolist', 'donelist']"
+          class="item-list"
+          (cdkDropListDropped)="drop($event)"
+        >
+          <div class="item-box" *ngFor="let item of doing" cdkDrag>
+            {{ item.project_name }}
+          </div>
+        </div>
+      </div>
     </div>
     <div class="col-md-4">
-        <div class="drag-container">
-            <div class="section-heading">Doing</div>
-        
-            <div cdkDropList id="doinglist"  [cdkDropListData]="doing" [cdkDropListConnectedTo]="['todolist','donelist']"
-              class="item-list" (cdkDropListDropped)="drop($event)">
-              <div class="item-box" *ngFor="let item of doing" cdkDrag>{{item.project_name}}</div>
-            </div>
+      <div class="drag-container">
+        <div class="section-heading">Done</div>
+
+        <div
+          cdkDropList
+          id="donelist"
+          [cdkDropListData]="done"
+          [cdkDropListConnectedTo]="['todolist', 'doinglist']"
+          class="item-list"
+          (cdkDropListDropped)="drop($event)"
+        >
+          <div class="item-box" *ngFor="let item of done" cdkDrag>
+            {{ item.project_name }}
           </div>
-    </div>
-    <div class="col-md-4">
-        <div class="drag-container">
-            <div class="section-heading">Done</div>
-        
-            <div cdkDropList id="donelist"  [cdkDropListData]="done" [cdkDropListConnectedTo]="['todolist','doinglist']"
-              class="item-list" (cdkDropListDropped)="drop($event)">
-              <div class="item-box" *ngFor="let item of done" cdkDrag>{{item.project_name}}</div>
-            </div>
-          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
