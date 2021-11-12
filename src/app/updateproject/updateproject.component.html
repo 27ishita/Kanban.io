@@ -1,0 +1,23 @@
+<h3 style="text-align: center;">Update project</h3>
+
+<form (ngSubmit)="onSubmit()">
+
+ 
+  <div class="form-group">
+    <label  style="font-weight: 900;">Add project name</label>
+    <input type="text" class="form-control" id="project_name" name="project_name"  aria-describedby="emailHelp" placeholder="Enter project name" [(ngModel)]="task.project_name">
+      
+  </div>
+  <div class="form-group">
+      <label >Add project description</label>
+      <input type="text" class="form-control" id="description" name="description"  aria-describedby="emailHelp" placeholder="Enter description" [(ngModel)]="task.description">
+   
+    </div>
+    <div class="form-group">
+      <label >Add project status</label>
+      <input type="text" class="form-control" id="status" name="status"  aria-describedby="emailHelp" placeholder="Enter status" [(ngModel)]="task.status">
+   
+    </div>
+    <button type="submit" class="btn btn-dark">Submit</button>
+
+</form>
