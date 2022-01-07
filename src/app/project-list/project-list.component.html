@@ -1,31 +1,53 @@
 <table class="table">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">Project ID</th>
-        <th scope="col">Project Name</th>
-        <th scope="col">Description</th>
-        <th scope="col">Status</th>
-        <th scope="col">Remove</th>
-        <th scope="col">Update</th>
-        
-        
-        
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let t of AllTasks| slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
-        
-        <td>{{t.project_id}}</td>
-        <td>{{t.project_name}}</td>
-        <td>{{t.description}}</td>
-        <td>{{t.status}}</td>
-        <td> <button type="button" class="btn btn-dark" (click)=" deleteProject(t.project_id)">Delete</button></td>
-       
-        
-        <td><button type="button" class="btn btn-dark" (click)=" updateProject(t.project_id)">Update</button></td>
-        
-      </tr>
-      
-    </tbody>
-  </table>
-  <ngb-pagination [collectionSize]="AllTasks.length"  [(page)]="page"   [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true" aria-label="Default pagination"></ngb-pagination>
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Project ID</th>
+      <th scope="col">Project Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">Status</th>
+      <th scope="col">Remove</th>
+      <th scope="col">Update</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      *ngFor="
+        let t of AllTasks
+          | slice: (page - 1) * pageSize:(page - 1) * pageSize + pageSize
+      "
+    >
+      <td>{{ t.project_id }}</td>
+      <td>{{ t.project_name }}</td>
+      <td>{{ t.description }}</td>
+      <td>{{ t.status }}</td>
+      <td>
+        <button
+          type="button"
+          class="btn btn-dark"
+          (click)="deleteProject(t.project_id)"
+        >
+          Delete
+        </button>
+      </td>
+
+      <td>
+        <button
+          type="button"
+          class="btn btn-dark"
+          (click)="updateProject(t.project_id)"
+        >
+          Update
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<ngb-pagination
+  [collectionSize]="AllTasks.length"
+  [(page)]="page"
+  [maxSize]="5"
+  [rotate]="true"
+  [ellipses]="false"
+  [boundaryLinks]="true"
+  aria-label="Default pagination"
+></ngb-pagination>
