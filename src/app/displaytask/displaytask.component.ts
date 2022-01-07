@@ -54,22 +54,25 @@ export class DisplaytaskComponent implements OnInit {
         event.previousIndex,
         event.currentIndex
       );
-
-      switch (event.container.id) {
-        case 'todolist':
-          data.status = 'todo';
-          break;
-
-        case 'donelist':
-          data.status = 'done';
-          break;
-
-        case 'doinglist':
-          data.status = 'doing';
-          break;
-      }
-
-      this.service.updateTask(data, data.project_id).subscribe(console.log);
+      this.updateTask(data, event.container.id);
     }
+  }
+
+  updateTask(data: Tasks, id: string) {
+    switch (id) {
+      case 'todolist':
+        data.status = 'todo';
+        break;
+
+      case 'donelist':
+        data.status = 'done';
+        break;
+
+      case 'doinglist':
+        data.status = 'doing';
+        break;
+    }
+
+    this.service.updateTask(data, data.project_id).subscribe(console.log);
   }
 }
